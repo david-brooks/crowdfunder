@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140225204517) do
+ActiveRecord::Schema.define(version: 20140225214637) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(version: 20140225204517) do
     t.string   "description"
     t.integer  "goal"
     t.integer  "user_id"
-    t.integer  "reward_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "start_date"
@@ -50,6 +49,7 @@ ActiveRecord::Schema.define(version: 20140225204517) do
     t.string   "prizes"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "project_id"
   end
 
   create_table "users", force: true do |t|
