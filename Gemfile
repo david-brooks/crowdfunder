@@ -1,13 +1,13 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.2'
+gem 'rails', '4.0.3'
 
 # Use postgresql as the database for Active Record
 
+gem 'pg'
 
 group :development, :test do
-  gem 'pg'
   gem 'rspec-rails', '2.13.1'
 end
 
@@ -46,12 +46,9 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-group :production do
-  gem 'pg' 
-end
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.1.2'
+gem 'bcrypt-ruby', '3.1.2'
 
 # Use unicorn as the app server
 # gem 'unicorn'
