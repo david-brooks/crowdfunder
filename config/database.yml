@@ -19,7 +19,7 @@ development:
   encoding: unicode
   database: crowdfunder_development
   pool: 5
-  username: jeff
+  username: crowdfunder_development
   password: 
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -48,7 +48,7 @@ test:
   encoding: unicode
   database: crowdfunder_test
   pool: 5
-  username: jeff
+  username: crowdfunder_test
   password:
 
 production:
