@@ -9,4 +9,9 @@ describe User do
   	before {@user.email = " "}
   	it {should_not be_valid}
   end
+
+  describe "password has to be at least 6 characters" do
+  	before {@user.password = "agne"}
+  	it {should_not be_valid}
+  end
 end
