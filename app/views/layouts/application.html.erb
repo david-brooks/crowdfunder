@@ -1,14 +1,83 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Crowdfunder</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<%= yield %>
+    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
 
-</body>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+   <nav class="top-bar" data-topbar>
+  <ul class="title-area">
+    <li class="name">
+      <h1><%= link_to "Crowdfunder", root_url %></h1>
+    </li>
+    <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+  </ul>
+
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <li class="active"><%= link_to "Home", root_url %></li>
+      <li class="active"><%= link_to "Help", help_path %></li>
+      <% if signed_in? %>
+        <li class="active"><%= link_to "Sign out", signout_path, method: :delete %></li>
+        <li class="has-dropdown not-click">
+        <a href="#">Account</a>
+        <ul class="dropdown">
+          <li class="active"><%= link_to "Profile", current_user %></li>
+          <li class="active"><%= link_to "Settings", edit_user_path(current_user) %></li>
+          <li class="active"><%= link_to "All users", users_path %></li>
+        </ul>
+      </li>
+      <% else %>
+        <li class="active"><%= link_to "Sign up", signup_path %></li>
+        <li class="active"><%= link_to "Sign in", signin_path %></li>
+      <% end %>
+    </ul>
+
+    <!-- Left Nav Section -->
+    <ul class="left">
+      <li><a href="#">Left Nav Button</a></li>
+    </ul>
+  </section>
+</nav>
+  <body>
+    <div class="row">
+      <div class="small-12 columns">
+        <% flash.each do |key,value| %>
+          <div data-alert class="alert-box <%= key %> radius">
+            <%= value %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <%= yield %>
+    <%= javascript_include_tag "application" %>
+
+    <footer id="debugger"><%= debug(params) if Rails.env.development? %></footer>
+
+    <footer class="row">
+      <div id="smo" class="small-12 columns">
+        <hr>
+        <div class="row">
+          <div class="small-6 columns">
+            <p>© Copyright illness</p>
+          </div>
+          <div class="large-6 small-6 columns">
+            <ul class="inline-list right">
+              <li><%= link_to "About", about_path %></li>
+              <li><%= link_to "Help", help_path %></li>
+              <li><%= link_to "Contact us", contact_path %></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>
