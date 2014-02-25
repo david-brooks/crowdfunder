@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+	has_many :projects
+	has_many :pledges
+	has_many :rewards 
 	has_secure_password
 	before_save {email.downcase!}
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
