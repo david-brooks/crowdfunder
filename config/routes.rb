@@ -7,9 +7,13 @@ Crowdfunder::Application.routes.draw do
 
   resources :projects do
     resources :rewards, only: [:new,:create,:edit,:update,:destroy]
+    resources :pledges, only: [:new,:create,:destroy]
   end
 
-  resources :pledges
+  resources :rewards do
+    resources :pledges, only: [:new,:create,:destroy]
+  end
+
 
   match "/signup", to: "users#new", via: "get"
   match "/signin", to: "sessions#new", via: "get"

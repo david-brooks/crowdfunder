@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 	before_save {email.downcase!}
 	before_create :create_remember_token
-	has_many :projects, foreign_key: "owner_id"
+	has_many :projects
 	has_many :pledges
 	has_many :rewards, through: :pledges
 	has_secure_password

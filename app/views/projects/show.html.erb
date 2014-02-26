@@ -4,7 +4,7 @@
 
     <p>Description: <%= @project.description %></p>
     <p>Goal: $<%= @project.goal %></p>
-    <% if @project.user == current_user && signed_in? && current_user %>
+    <% if @project.owner == current_user && signed_in? && current_user %>
       <p><%= link_to "Edit", edit_project_path(@project) %> | <%= link_to "Delete", @project, confirm: "Are you sure?", method: :delete %></p>
     <% end %>
 
@@ -15,9 +15,13 @@
     	<p><b>Reward amount: </b><%= r.amount %></p>
     	<p><b>Description: </b><%= r.description %></p>
 
+      <p><%= link_to "Make a pledge", new_project_pledge_path(@project) %></p>
+
     <% end %>
 
-    <p><%= link_to "Make a reward", new_project_reward_path(@project) %></p>
+    <% if current_user && signed_in? %>
+      <p><%= link_to "Make a reward", new_project_reward_path(@project) %></p>
+    <% end %>
 
   </div>
 </div>
