@@ -3,9 +3,9 @@ Crowdfunder::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new,:create,:destroy]
 
-  resources :projects
-
-  resources :rewards
+  resources :projects do
+    resources :rewards, only: [:new,:create,:edit,:update,:destroy]
+  end
 
   resources :pledges
 
