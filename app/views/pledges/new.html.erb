@@ -3,9 +3,9 @@
 <div class="small-12 large-6 large-centered columns">
 <div class="text-center"><h1>Make a pledge</h1></div>
 
-	<h2>Pledge Amount: <%= @reward.amount %></h3>
+	<h2>Pledge Amount: <%= @pledge.project %></h3>
 
-	<h3>Description: <%= @reward.description %></h3>
+	<h3>Description: <%= @pledge.reward %></h3>
 
 	<%= form_for([@project,@pledge]) do |f| %>
 

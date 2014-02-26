@@ -1,19 +1,21 @@
 class PledgesController < ApplicationController
   before_action :find_project
-  before_action :find_reward
+  before_action :find_reward, only: :create
 
-	
   def new
   	@pledge = @project.pledges.new
   end
 
   def create
 	@pledge = @project.pledges.build(pledge_params)
-	if @pledge.save
-		flash[:success] = "Thank you for funding us!"
-		redirect_to @project
-	else
-		render :new
+	respond_to do |format|
+		if @pledge.save
+			format.html {redirect_to project_path(@project), notice: 'Thanks for the ched!'}
+			format.js
+		else
+			format.html {render 'projects/show', alert: "There was an error"}
+			format.js
+		end
 	end
   end
 
@@ -34,7 +36,6 @@ class PledgesController < ApplicationController
   end
 
   def find_reward
-  	@reward = find_project.rewards.find(params[:reward_id])
-  	return @reward
+  	@reward = Project.reward.find(params[:id])
   end
 end
