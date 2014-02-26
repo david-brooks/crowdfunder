@@ -1,0 +1,26 @@
+<%= form_for @project do |f| %>
+	<%= render "shared/error_messages", object: f.object %>
+
+	  <div class="field">
+	    <%= f.label :title %><br>
+	    <%= f.text_field :title %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :description %><br>
+	    <%= f.text_area :description, style: "height: 20rem" %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :goal %><br>
+	    <%= f.number_field :goal %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :start_date %><br>
+	    <%= f.date_select :start_date %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :end_date %><br>
+	    <%= f.date_select :end_date %>
+	  </div>
+	  <div class="text-center"><%= f.submit "Submit", class: "button radius" %></div>
+
+<% end %>

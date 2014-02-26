@@ -24,7 +24,9 @@
     <ul class="right">
       <li class="active"><%= link_to "Home", root_url %></li>
       <li class="active"><%= link_to "Help", "#" %></li>
+      
       <% if signed_in? %>
+        <li class="active"><%= link_to "New Project", new_project_path %></li>
         <li class="active"><%= link_to "Sign out", signout_path, method: :delete %></li>
         <li class="has-dropdown not-click">
         <a href="#">Account</a>
