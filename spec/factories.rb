@@ -1,12 +1,13 @@
 FactoryGirl.define do
-	factory :user do
+	factory :user, aliases: [:owner] do
 		first_name "Jimbo"
 		last_name "Baggins"
-		email "donthate@gmail.com"
+		sequence(:email, 1000) { |n| "person#{n}@example.com" }
 		password "baggins"
 		password_confirmation "baggins"
 	end
 end
+
 
 FactoryGirl.define do
 	factory :project do
@@ -15,7 +16,15 @@ FactoryGirl.define do
 		goal 5678
 		start_date Time.now
 		end_date 5.days.from_now
-		user
+		owner
+	end
+end
+
+FactoryGirl.define do
+	factory :reward do
+		amount 45
+		description "Fund my project meng!"
+		project
 	end
 end
 

@@ -16,7 +16,7 @@
 	      	<% @projects.each do |project| %>
 	          <li>
               <p class="center">Project: <%= link_to truncate(project.title, length: 30), project %><br>
-              <% if project.user == current_user && signed_in? %>
+              <% if project.owner == current_user && signed_in? %>
                 <%= link_to "Edit", edit_project_path(project) %> |
                 <%= link_to "Delete", project, data: {confirm: "Are you sure?"}, method: :delete %>
               <% end %>

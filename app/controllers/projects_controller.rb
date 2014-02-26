@@ -32,6 +32,7 @@ class ProjectsController < ApplicationController
 	def show
 		@project = Project.find(params[:id])
 		@rewards = @project.rewards
+		@pledge = @project.pledges.build
 	end
 
 	def index
