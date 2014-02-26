@@ -5,18 +5,18 @@
       <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-3">
 
 
-      	<%= form_tag projects_path, method: :get, authentication: false, id: 'project-form' do %>
+        <%= form_tag projects_path, method: :get, authentication: false, id: 'project-form' do %>
 
-      		<%= text_field_tag :search, params[:search] %>
-      		<%= submit_tag "Search" %>
+          <%= text_field_tag :search, params[:search] %>
+          <%= submit_tag "Search" %>
 
-      	<% end %>
+        <% end %>
 
-      	<div class="small-block-grid-2 medium-block-grid-3 large-block-grid-1" id="projects">
-	      	<% @projects.each do |project| %>
-	          <li>
+        <div class="small-block-grid-2 medium-block-grid-3 large-block-grid-1" id="projects">
+          <% @projects.each do |project| %>
+            <li>
               <p class="center">Project: <%= link_to truncate(project.title, length: 30), project %><br>
-              <% if project.user == current_user && signed_in? %>
+              <% if project.owner == current_user && signed_in? %>
                 <%= link_to "Edit", edit_project_path(project) %> |
                 <%= link_to "Delete", project, data: {confirm: "Are you sure?"}, method: :delete %>
               <% end %>
@@ -26,10 +26,10 @@
               </p>
 
             </li>
-	        <% end %>
-      	</div>
+          <% end %>
+        </div>
 
-      	
+        
 
       </ul>
 
