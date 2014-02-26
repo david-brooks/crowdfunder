@@ -2,6 +2,7 @@
   <div class="small-12">
   <h1>Project: <%= @project.title %></h1>
 
+    <p>Amount raised: <%= @project.amount_raised %></p>
     <p>Description: <%= @project.description %></p>
     <p>Goal: $<%= @project.goal %></p>
     <% if @project.owner == current_user && signed_in? && current_user %>
@@ -15,7 +16,13 @@
     	<p><b>Reward amount: </b><%= r.amount %></p>
     	<p><b>Description: </b><%= r.description %></p>
 
-      <p><%= link_to "Make a pledge", new_project_pledge_path(@project) %></p>
+        <%= form_for [@project, @pledge], remote: true do |f| %>
+
+          <%= f.label :amount %>
+          <%= f.number_field :amount %>
+          <%= f.submit "Submit" %>
+
+        <% end %>
 
     <% end %>
 
