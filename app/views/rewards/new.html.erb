@@ -1,2 +1,19 @@
-<h1>Rewards#new</h1>
-<p>Find me in app/views/rewards/new.html.erb</p>
+<%= provide(:title, "Rewards") %>
+
+<div class="small-12 large-6 large-centered columns">
+<div class="text-center"><h1>Project Rewards</h1></div>
+
+	<%= form_for([@project,@reward]) do |f| %>
+
+		<%= f.label :amount %>
+		<%= f.number_field :amount %>
+
+		<%= f.label :description %>
+		<%= f.text_area :description, style: "height:13rem" %>
+
+		<%= f.submit "Submit", class: "button radius" %>
+
+	<% end %>
+</div>
+
+

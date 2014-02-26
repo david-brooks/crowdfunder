@@ -8,5 +8,16 @@
       <p><%= link_to "Edit", edit_project_path(@project) %> | <%= link_to "Delete", @project, confirm: "Are you sure?", method: :delete %></p>
     <% end %>
 
+    <h2>Project Rewards</h2>
+
+    <% @rewards.each do |r| %>
+
+    	<p><b>Reward amount: </b><%= r.amount %></p>
+    	<p><b>Description: </b><%= r.description %></p>
+
+    <% end %>
+
+    <p><%= link_to "Make a reward", new_project_reward_path(@project) %></p>
+
   </div>
 </div>
