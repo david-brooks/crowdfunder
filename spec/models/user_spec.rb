@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe User do
+  let(:project) {FactoryGirl.create(:project)}
   before {@user = User.new(email: "sup@gmail.com", first_name: "Billy", last_name: "Bob", password: "billybob", password_confirmation: "billybob")}
 
   subject {@user}
@@ -14,4 +15,6 @@ describe User do
   	before {@user.password = "agne"}
   	it {should_not be_valid}
   end
+
+  
 end
