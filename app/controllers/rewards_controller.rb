@@ -48,3 +48,4 @@ class RewardsController < ApplicationController
 		@reward = @project.rewards.find(params[:id])
 	end
 end
+
