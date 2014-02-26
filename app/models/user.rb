@@ -1,9 +1,10 @@
 class User < ActiveRecord::Base
-	has_many :projects
+	before_save {email.downcase!}
+	before_create :create_remember_token
+	has_many :projects, foreign_key: "owner_id"
 	has_many :pledges
 	has_many :rewards 
 	has_secure_password
-	before_save {email.downcase!}
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 	validates :email, presence: true, uniqueness: {case_sensitive:false}, format: {with: VALID_EMAIL_REGEX}
 	validates :password, length: {minimum:6}
@@ -23,3 +24,4 @@ class User < ActiveRecord::Base
 		self.remember_token = User.encrypt(User.new_remember_token)
 	end
 end
+

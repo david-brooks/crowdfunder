@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(user_params)
 		if @user.save
+			sign_in @user
 			flash[:success] = "Your account has been created"
 			redirect_to @user
 		else
@@ -36,6 +37,10 @@ class UsersController < ApplicationController
 		User.find(params[:id]).destroy
 		flash[:alert] = "You destroyed a user!"
 		redirect_to users_path
+	end
+
+	def show
+		@user = User.find(params[:id])
 	end
 
 	private

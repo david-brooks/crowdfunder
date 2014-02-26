@@ -1,5 +1,5 @@
 Crowdfunder::Application.routes.draw do
-  root "users#index"
+  root "projects#index"
   resources :users
   resources :sessions, only: [:new,:create,:destroy]
 

@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="small-12">
+    <div class="small-12 text-center"><h1>Projects</h1></div>
+
+      <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-3">
+
+
+      	<%= form_tag projects_path, method: :get, authentication: false, id: 'project-form' do %>
+
+      		<%= text_field_tag :search, params[:search] %>
+      		<%= submit_tag "Search" %>
+
+      	<% end %>
+
+      	<div class="small-block-grid-2 medium-block-grid-3 large-block-grid-3" id="projects">
+	      	<% @projects.each do |project| %>
+	          <li>
+              <p class="center">Project: <%= link_to truncate(project.title, length: 30), project %><br>
+              <% if project.user == current_user && signed_in? %>
+                <%= link_to "Edit", edit_project_path(project) %> |
+                <%= link_to "Delete", project, data: {confirm: "Are you sure?"}, method: :delete %>
+              <% end %>
+
+              <p class="center">Description: <%= project.description %></p>
+              <p class="center">Goal: $<%= project.goal %></p>
+              </p>
+
+            </li>
+	        <% end %>
+      	</div>
+
+      	
+
+      </ul>
+
+    
+
+  </div>
+</div>
