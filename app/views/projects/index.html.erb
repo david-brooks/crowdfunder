@@ -20,17 +20,42 @@
 
         <% end %>
 
+                 <!-- image slider  -->
+         <link rel=“stylesheet” type=“text/css” href=“css/custom.css.scss”>
+        <ul class="example-orbit" data-orbit>
+          <li>
+            <img src="http://images.gizmag.com/gallery_lrg/meta-augmented-reality-glasses.jpg" alt="slide 1" />
+            <div class="orbit-caption">
+              Meta Augmented Reality Glasses.
+            </div>
+          </li>
+          <li>
+            <img src="http://www.popsci.com/files/imagecache/article_image_large/articles/oculus_rift.jpg" alt="slide 2" />
+            <div class="orbit-caption">
+             Occulus Rift.
+            </div>
+          </li>
+          <li>
+            <img src="http://cdn2.ubergizmo.com/wp-content/uploads/2013/04/ouya-console-underperforms-640x530.jpg" alt="slide 3" />
+            <div class="orbit-caption">
+              Ouya Game Console.
+            </div>
+          </li>
+        </ul>
+
+
         <div class="small-block-grid-2 medium-block-grid-3 large-block-grid-1" id="projects">
           <% @projects.each do |project| %>
-            <li>
+            <li>             
+              <p class="center"><%= image_tag(project.image_url(:thumb)) %></p>
               <p class="center">Project: <%= link_to truncate(project.title, length: 30), project %><br>
               <% if project.owner == current_user && signed_in? %>
                 <%= link_to "Edit", edit_project_path(project) %> |
                 <%= link_to "Delete", project, data: {confirm: "Are you sure?"}, method: :delete %>
               <% end %>
-
               <p class="center">Description: <%= project.description %></p>
               <p class="center">Goal: $<%= project.goal %></p>
+
               </p>
 
             </li>

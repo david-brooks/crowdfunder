@@ -63,29 +63,6 @@
     <%= yield %>
     <%= javascript_include_tag "application" %>
    
- <!-- image slider  -->
- <link rel=“stylesheet” type=“text/css” href=“css/custom.css.scss”>
-<ul class="example-orbit" data-orbit>
-  <li>
-    <img src="http://images.gizmag.com/gallery_lrg/meta-augmented-reality-glasses.jpg" alt="slide 1" />
-    <div class="orbit-caption">
-      Meta Augmented Reality Glasses.
-    </div>
-  </li>
-  <li>
-    <img src="http://www.popsci.com/files/imagecache/article_image_large/articles/oculus_rift.jpg" alt="slide 2" />
-    <div class="orbit-caption">
-     Occulus Rift.
-    </div>
-  </li>
-  <li>
-    <img src="http://cdn2.ubergizmo.com/wp-content/uploads/2013/04/ouya-console-underperforms-640x530.jpg" alt="slide 3" />
-    <div class="orbit-caption">
-      Ouya Game Console.
-    </div>
-  </li>
-</ul>
-
 <!--  Footer on crowdfunder-->
 
     <footer id="debugger"><%= debug(params) if Rails.env.development? %></footer>
