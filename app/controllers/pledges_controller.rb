@@ -1,13 +1,14 @@
 class PledgesController < ApplicationController
+  before_action :find_reward
   before_action :find_project
-  before_action :find_reward, only: :create
 
   def new
   	@pledge = @project.pledges.new
   end
 
   def create
-	@pledge = @project.pledges.build(pledge_params)
+	@pledge = @reward.pledges.build
+  @pledge.amount = @reward.amount
 	respond_to do |format|
 		if @pledge.save
 			format.html {redirect_to project_path(@project), notice: 'Thanks for the ched!'}
@@ -32,10 +33,10 @@ class PledgesController < ApplicationController
   end
 
   def find_project
-  	@project = Project.find(params[:project_id])
+  	@project = @reward.project
   end
 
   def find_reward
-  	@reward = Project.reward.find(params[:id])
+    @reward = Reward.find(params[:reward_id])
   end
 end

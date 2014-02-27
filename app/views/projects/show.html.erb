@@ -16,12 +16,9 @@
     	<p><b>Reward amount: </b><%= r.amount %></p>
     	<p><b>Description: </b><%= r.description %></p>
 
-        <%= form_for [@project, @pledge], remote: true do |f| %>
-
-          <%= f.label :amount %>
-          <%= f.number_field :amount %>
-          <%= f.submit "Submit" %>
-
+        <%= form_tag reward_pledges_path(r) do %>
+          <%= hidden_field_tag "reward_id", r.id %>
+          <%= submit_tag "Make a pledge!" %>
         <% end %>
 
     <% end %>
