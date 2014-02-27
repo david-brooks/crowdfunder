@@ -2,7 +2,7 @@
   <div class="small-12">
   <h1>Project: <%= @project.title %></h1>
 
-    <div><%= image_tag @project.image_url.to_s %></div>
+    <div><%= image_tag @project.image_url(:thumb) %></div>
 
     <div>
       Amount raised: 

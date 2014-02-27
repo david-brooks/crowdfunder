@@ -15,7 +15,7 @@
 	  </div>
 	  <div class="field">
 	    <%= f.label :start_date %><br>
-	    <%= f.date_select :start_date %>
+	    <%= f.date_select :start_date, start_year: Time.now.year, default: 3.days.from_now %>
 	  </div>
 	  <div class="field">
 	    <%= f.label :end_date %><br>
