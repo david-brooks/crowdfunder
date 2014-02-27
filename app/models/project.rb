@@ -9,6 +9,10 @@ class Project < ActiveRecord::Base
 
 	mount_uploader :image, ImageUploader
 
+	def categories
+		["Art","Comics","Dance","Design","Fashion","Film & Video","Food","Games","Music","Photography","Publishing","Technology","Theater"]
+	end
+
 	def amount_raised
 		"$#{pledges.sum(:amount)}"
 	end

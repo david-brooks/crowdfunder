@@ -14,6 +14,11 @@
 	    <%= f.number_field :goal %>
 	  </div>
 	  <div class="field">
+	    <%= f.label :category %><br>
+	    <%= f.select :category, options_for_select(@project.categories) %>
+	  </div>
+
+	  <div class="field">
 	    <%= f.label :start_date %><br>
 	    <%= f.date_select :start_date, start_year: Time.now.year, default: 3.days.from_now %>
 	  </div>
