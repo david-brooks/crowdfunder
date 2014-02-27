@@ -5,6 +5,8 @@ class Project < ActiveRecord::Base
 	has_many :backers, through: :pledges, source: :user
 	validates :title, presence: true, length: {minimum: 10}
 
+	mount_uploader :image, ImageUploader
+
 	def amount_raised
 		"$#{pledges.sum(:amount)}"
 	end
