@@ -4,6 +4,8 @@ class Project < ActiveRecord::Base
 	has_many :pledges, through: :rewards
 	has_many :backers, through: :pledges, source: :user
 	validates :title, presence: true, length: {minimum: 10}
+	validates :description, presence: true
+	validates :goal, presence: true, numericality: {only_integer: true}
 
 	mount_uploader :image, ImageUploader
 
