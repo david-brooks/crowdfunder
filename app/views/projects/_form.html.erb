@@ -10,6 +10,13 @@
 	    <%= f.text_area :description, style: "height: 20rem" %>
 	  </div>
 	  <div class="field">
+	  	<%= f.file_field :image %>
+	  </div>
+	  <div class="field">
+	  	<%= f.label :remote_image_url, "or image URL" %><br />
+		<%= f.text_field :remote_image_url %>
+	  </div>
+	  <div class="field">
 	    <%= f.label :goal %><br>
 	    <%= f.number_field :goal %>
 	  </div>
@@ -26,11 +33,7 @@
 	    <%= f.label :end_date %><br>
 	    <%= f.date_select :end_date, start_year: Time.now.year, default: 6.days.from_now %>
 	  </div>
-	  <div class="field">
-	      <p>
-    <%= f.file_field :image %>
-  </p>
-	  </div>
+	  
 
 
 	  <div class="text-center"><%= f.submit "Submit", class: "button radius" %></div>
