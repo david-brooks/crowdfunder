@@ -2,6 +2,8 @@
   <div class="small-12">
   <h1>Project: <%= @project.title %></h1>
 
+    <div><%= image_tag @project.image_url.to_s %></div>
+
     <div>
       Amount raised: 
       <p id="amount_raised"><%= @project.amount_raised %></p>
