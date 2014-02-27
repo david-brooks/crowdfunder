@@ -1,5 +1,6 @@
 class Project < ActiveRecord::Base
 	belongs_to :owner, class_name: "User"
+	belongs_to :category
 	has_many :rewards
 	has_many :pledges, through: :rewards
 	has_many :backers, through: :pledges, source: :user
@@ -9,7 +10,8 @@ class Project < ActiveRecord::Base
 
 	mount_uploader :image, ImageUploader
 
-	def categories
+
+	def cat
 		["Art","Comics","Dance","Design","Fashion","Film & Video","Food","Games","Music","Photography","Publishing","Technology","Theater"]
 	end
 

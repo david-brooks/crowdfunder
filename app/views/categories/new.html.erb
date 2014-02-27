@@ -1,0 +1,16 @@
+<%= provide(:title, "Make a category") %>
+
+<div class="small-12 large-6 large-centered columns">
+<div class="text-center"><h1>Make a category</h1></div>
+
+	<%= form_for @category do |f| %>
+
+		<%= f.label :category_name, "Category" %>
+		<%= f.text_field :category_name %>
+
+		<%= f.submit "Submit", class: "button radius" %>
+
+	<% end %>
+</div>
+
+

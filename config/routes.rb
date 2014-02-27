@@ -14,6 +14,8 @@ Crowdfunder::Application.routes.draw do
     resources :pledges, only: [:new,:create,:destroy]
   end
 
+  resources :categories
+
 
   match "/signup", to: "users#new", via: "get"
   match "/signin", to: "sessions#new", via: "get"
