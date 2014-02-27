@@ -2,7 +2,10 @@
   <div class="small-12">
   <h1>Project: <%= @project.title %></h1>
 
-    <p>Amount raised: <%= @project.amount_raised %></p>
+    <div>
+      Amount raised: 
+      <p id="amount_raised"><%= @project.amount_raised %></p>
+    </div>
     <p>Description: <%= @project.description %></p>
     <p>Goal: $<%= @project.goal %></p>
     <% if @project.owner == current_user && signed_in? && current_user %>
@@ -16,7 +19,7 @@
     	<p><b>Reward amount: </b><%= r.amount %></p>
     	<p><b>Description: </b><%= r.description %></p>
 
-        <%= form_tag reward_pledges_path(r) do %>
+        <%= form_tag reward_pledges_path(r), remote: true do %>
           <%= hidden_field_tag "reward_id", r.id %>
           <%= submit_tag "Make a pledge!" %>
         <% end %>
