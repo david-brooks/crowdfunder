@@ -17,4 +17,16 @@ class Project < ActiveRecord::Base
 	def amount_raised
 		"$#{pledges.sum(:amount)}"
 	end
+
+	def remaining_time
+    starting_date = Time.now.utc > start_date ? Time.now.utc : start_date
+    hours = (end_date.end_of_day - starting_date) / 3600
+    if hours > 24
+      return sprintf("%.0f", hours / 24) + "day".pluralize((hours / 24).to_i)
+    else
+      sprintf("%.0f", hours) + "hour".pluralize(hours)
+    end
+  end
+
+
 end

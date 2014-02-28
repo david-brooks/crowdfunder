@@ -13,6 +13,10 @@
     <% if @project.owner == current_user && signed_in? && current_user %>
       <p><%= link_to "Edit", edit_project_path(@project) %> | <%= link_to "Delete", @project, confirm: "Are you sure?", method: :delete %></p>
     <% end %>
+     
+     <div class="project-remaining">
+    <%= @project.remaining_time %><small class="label">to go</small>
+     </div>
 
     <h2>Project Rewards</h2>
 
