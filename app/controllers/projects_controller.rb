@@ -36,7 +36,12 @@ class ProjectsController < ApplicationController
 	end
 
 	def index
-		@projects = Project.all
+		if (params[:category_id])
+			@category = Category.find(params[:category_id])
+			@projects = @category.projects
+		else
+			@projects = Project.all
+		end
 	end
 
 	def destroy

@@ -1,7 +1,7 @@
 Crowdfunder::Application.routes.draw do
 
   
-  root "projects#index"
+  root "categories#index"
   resources :users
   resources :sessions, only: [:new,:create,:destroy]
 
@@ -14,7 +14,9 @@ Crowdfunder::Application.routes.draw do
     resources :pledges, only: [:new,:create,:destroy]
   end
 
-  resources :categories
+  resources :categories, only: [:new,:create,:index] do
+    resources :projects
+  end
 
 
   match "/signup", to: "users#new", via: "get"

@@ -1,16 +1,12 @@
+<%= @category.projects.inspect %>
+
+<%= category_list %>
+
 <div class="row">
   <div class="small-12">
     <div class="small-12 text-center"><h1>Projects</h1></div>
 
       <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-3">
-
-        <div class="row text-center">
-          <% ["Art","Comics","Dance","Design","Fashion","Film & Video","Food","Games","Music","Photography","Publishing","Technology","Theater"].each do |c| %>
-
-            <h3 class="category"><%= link_to c, "#" %> | </h3>
-
-          <% end %>
-        </div>
 
 
         <%= form_tag projects_path, method: :get, authentication: false, id: 'project-form' do %>
@@ -20,8 +16,15 @@
 
         <% end %>
 
-        <div class="small-block-grid-2 medium-block-grid-3 large-block-grid-1" id="projects">
-          <% @projects.each do |project| %>
+        <% if @projects.empty? %>
+        
+          <h2>Nothing was found!</h2>
+
+        <% else %>
+
+                       <div class="small-block-grid-2 medium-block-grid-3 large-block-grid-1" id="projects">
+        
+            <% @projects.each do |project| %>
             <li>
               <p class="center">Project: <%= link_to truncate(project.title, length: 30), project %><br>
               <% if project.owner == current_user && signed_in? %>
@@ -35,8 +38,11 @@
 
             </li>
           <% end %>
+
+
         </div>
 
+        <% end %>
         
 
       </ul>
