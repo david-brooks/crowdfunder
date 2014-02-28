@@ -1,6 +1,6 @@
 Crowdfunder::Application.routes.draw do
 
-  
+get 'tags/:tag', to: 'projects#index', as: :tag  
   root "projects#index"
   resources :users
   resources :sessions, only: [:new,:create,:destroy]

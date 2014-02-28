@@ -21,7 +21,7 @@ group :test do
 	gem 'factory_girl_rails', '4.2.1'
 end
 
-	gem 'acts'
+gem 'acts-as-taggable-on'
 
 
 # Use SCSS for stylesheets

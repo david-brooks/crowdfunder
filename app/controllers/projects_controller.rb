@@ -36,7 +36,11 @@ class ProjectsController < ApplicationController
 	end
 
 	def index
-		@projects = Project.all
+		if params[:tag]
+			@projects = Project.tagged_with(params[:tag])
+		else
+			@projects = Project.all
+		end
 	end
 
 	def destroy
@@ -47,6 +51,6 @@ class ProjectsController < ApplicationController
 
 	private
 	def project_params
-		params.require(:project).permit(:title, :description, :goal, :category, :start_date, :end_date, :image, :remote_image_url)
+		params.require(:project).permit(:title, :description, :goal, :category, :start_date, :end_date, :image, :remote_image_url, :tag_list)
 	end
 end

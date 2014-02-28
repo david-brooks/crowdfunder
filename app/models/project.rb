@@ -6,8 +6,9 @@ class Project < ActiveRecord::Base
 	validates :title, presence: true, length: {minimum: 10}
 	validates :description, presence: true
 	validates :goal, presence: true, numericality: {only_integer: true}
-
 	mount_uploader :image, ImageUploader
+
+	acts_as_taggable
 
 	def categories
 		["Art","Comics","Dance","Design","Fashion","Film & Video","Food","Games","Music","Photography","Publishing","Technology","Theater"]

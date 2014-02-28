@@ -10,11 +10,8 @@
 	    <%= f.text_area :description, style: "height: 20rem" %>
 	  </div>
 	  <div class="field">
-	  	<%= f.file_field :image %>
-	  </div>
-	  <div class="field">
-	  	<%= f.label :remote_image_url, "or image URL" %><br />
-		<%= f.text_field :remote_image_url %>
+	  	<%= f.label :tag_list, "Tags (separated by commas)" %><br />
+		<%= f.text_field :tag_list %>
 	  </div>
 	  <div class="field">
 	    <%= f.label :goal %><br>
@@ -24,7 +21,6 @@
 	    <%= f.label :category %><br>
 	    <%= f.select :category, options_for_select(@project.categories) %>
 	  </div>
-
 	  <div class="field">
 	    <%= f.label :start_date %><br>
 	    <%= f.date_select :start_date, start_year: Time.now.year, default: 3.days.from_now %>
@@ -32,6 +28,14 @@
 	  <div class="field">
 	    <%= f.label :end_date %><br>
 	    <%= f.date_select :end_date, start_year: Time.now.year, default: 6.days.from_now %>
+	  </div>
+	  <div class="field">
+	  	<%= f.label :image %><br>
+	  	<%= f.file_field :image %>
+	  </div>
+	  <div class="field">
+	  	<%= f.label :remote_image_url, "or image URL" %><br />
+		<%= f.text_field :remote_image_url %>
 	  </div>
 	  
 
