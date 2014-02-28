@@ -17,10 +17,16 @@
 	    <%= f.label :goal %><br>
 	    <%= f.number_field :goal %>
 	  </div>
+
 	  <div class="field">
-	    <%= f.label :category %><br>
-	    <%= f.select :category, options_for_select(@project.categories) %>
+	    <%= f.label :type, "Category" %><br>
+	    <%= collection_select :project, :category_id, Category.all, :id, :category_name %>
 	  </div>
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> ajax_categories
 	  <div class="field">
 	    <%= f.label :start_date %><br>
 	    <%= f.date_select :start_date, start_year: Time.now.year, default: 3.days.from_now %>

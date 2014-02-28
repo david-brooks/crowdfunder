@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20140227224036) do
+=======
+ActiveRecord::Schema.define(version: 20140227225430) do
+>>>>>>> ajax_categories
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "category_name"
+  end
 
   create_table "images", force: true do |t|
     t.integer  "project_id"
@@ -42,7 +52,7 @@ ActiveRecord::Schema.define(version: 20140227224036) do
     t.datetime "end_date"
     t.integer  "owner_id"
     t.string   "image"
-    t.string   "category"
+    t.integer  "category_id"
   end
 
   add_index "projects", ["title"], name: "index_projects_on_title", using: :btree

@@ -1,5 +1,6 @@
 class Project < ActiveRecord::Base
 	belongs_to :owner, class_name: "User"
+	belongs_to :category
 	has_many :rewards
 	has_many :pledges, through: :rewards
 	has_many :backers, through: :pledges, source: :user
@@ -8,9 +9,14 @@ class Project < ActiveRecord::Base
 	validates :goal, presence: true, numericality: {only_integer: true}
 	mount_uploader :image, ImageUploader
 
+<<<<<<< HEAD
 	acts_as_taggable
 
 	def categories
+=======
+
+	def cat
+>>>>>>> ajax_categories
 		["Art","Comics","Dance","Design","Fashion","Film & Video","Food","Games","Music","Photography","Publishing","Technology","Theater"]
 	end
 

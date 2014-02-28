@@ -1,7 +1,12 @@
 Crowdfunder::Application.routes.draw do
 
+<<<<<<< HEAD
 get 'tags/:tag', to: 'projects#index', as: :tag  
   root "projects#index"
+=======
+  
+  root "categories#index"
+>>>>>>> ajax_categories
   resources :users
   resources :sessions, only: [:new,:create,:destroy]
 
@@ -12,6 +17,10 @@ get 'tags/:tag', to: 'projects#index', as: :tag
 
   resources :rewards do
     resources :pledges, only: [:new,:create,:destroy]
+  end
+
+  resources :categories, only: [:new,:create,:index] do
+    resources :projects
   end
 
 
